@@ -7,414 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Global Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.7;
-            color: #333;
-            background-color: #f0f4f8; /* لون رمادي فاتح جداً */
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        h1, h2 {
-            margin-bottom: 20px;
-            font-weight: 600;
-            color: #2c3e50; /* لون أزرق رمادي داكن */
-        }
-        p {
-            margin-bottom: 20px;
-            color: #555;
-        }
-        a {
-            text-decoration: none;
-            color: #007bff;
-            transition: color 0.3s ease;
-        }
-        a:hover {
-            color: #0056b3;
-        }
-
-        /* Header Styles */
-        header {
-            background-color: #fff; /* لون أبيض */
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo img {
-            height: 50px;
-            transition: transform 0.3s ease; /* إضافة تأثير التحريك */
-        }
-        .logo img:hover {
-            transform: scale(1.1); /* تكبير الشعار عند التمرير */
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-        nav ul li {
-            margin-right: 20px;
-        }
-        nav ul li a {
-            color: #2c3e50; /* لون أزرق رمادي داكن */
-            font-weight: 500;
-            text-transform: uppercase;
-            font-size: 1.1em;
-            transition: color 0.3s ease; /* إضافة تأثير التحريك */
-        }
-        nav ul li a:hover {
-            color: #ffc107; /* لون أصفر */
-        }
-
-        /* Hero Section Styles */
-        .hero {
-            background-color: #f0f4f8; /* لون رمادي فاتح جداً */
-            padding: 80px 0;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .hero-content {
-            text-align: right;
-            max-width: 45%;
-            animation: fadeInRight 1s ease; /* إضافة تأثير الظهور */
-        }
-        .hero-content h1 {
-            font-size: 2.5em;
-            color: #2c3e50; /* لون أزرق رمادي داكن */
-            margin-bottom: 20px;
-        }
-        .hero-content p {
-            font-size: 1.1em;
-            color: #555;
-            margin-bottom: 30px;
-        }
-        .buttons {
-            display: flex;
-            gap: 10px;
-        }
-        .primary-button, .secondary-button {
-            padding: 12px 25px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease; /* إضافة تأثير التحريك */
-        }
-        .primary-button {
-            background-color: #ffc107; /* لون أصفر */
-            color: #0c3000;
-        }
-        .primary-button:hover {
-            background-color: #e0a800;
-            color: #0c3000;
-            transform: scale(1.05); /* تكبير الزر عند التمرير */
-        }
-        .secondary-button {
-            background-color: #3498db; /* لون أزرق */
-            color: #fff;
-        }
-        .secondary-button:hover {
-            background-color: #2980b9;
-            transform: scale(1.05);
-        }
-        .hero-image {
-            max-width: 45%;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            animation: fadeInLeft 1s ease; /* إضافة تأثير الظهور */
-        }
-        .hero-image img {
-            width: 48%;
-            margin-bottom: 4%;
-            border-radius: 5px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease; /* إضافة تأثير التحريك */
-        }
-        .hero-image img:hover {
-            transform: translateY(-10px); /* رفع الصورة قليلاً عند التمرير */
-        }
-
-        /* About Us Section Styles */
-        .about-us {
-            padding: 80px 0;
-        }
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            animation: fadeIn 1s ease; /* إضافة تأثير الظهور */
-        }
-        .section-title h2 {
-            font-size: 2em;
-            color: #2c3e50; /* لون أزرق رمادي داكن */
-            position: relative;
-            padding-bottom: 10px;
-        }
-        .section-title h2::before {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background-color: #ffc107; /* لون أصفر */
-        }
-        .about-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            gap: 50px;
-            flex-wrap: wrap;
-        }
-        .about-image {
-            max-width: 45%;
-            transition: transform 0.3s ease; /* Add transition */
-        }
-        .about-image:hover {
-             transform: scale(1.05);
-        }
-        .about-image img {
-            max-width: 100%;
-            border-radius: 5px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .about-text {
-            max-width: 45%;
-            animation: fadeInUp 1s ease; /* إضافة تأثير الظهور */
-        }
-        .about-text p {
-            font-size: 1.1em;
-            color: #555;
-        }
-
-        /* مؤقت المشروعات */
-        #project-timer {
-            background-color: #3498db;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
-            margin-top: 50px;
-            animation: pulse 2s infinite; /* Add pulse animation */
-        }
-        #project-timer h2 {
-            font-size: 2em;
-            margin-bottom: 15px;
-        }
-        #timer-display {
-            font-size: 1.5em;
-            font-weight: bold;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.5);
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 50%;
-            border-radius: 10px;
-            position: relative;
-            animation: fadeIn 0.5s ease;
-        }
-        .close-button {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-        .close-button:hover,
-        .close-button:focus {
-            color: #000;
-            text-decoration: none;
-        }
-        #statistics-container {
-            margin-top: 50px;
-            padding: 20px;
-            background-color: #f0f0f0;
-            border-radius: 10px;
-            text-align: center;
-            animation: slideInLeft 1s ease;
-        }
-        #statistics-container h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            color: #3498db;
-        }
-        #statistics-display {
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 20px;
-            font-size: 1.2em;
-        }
-        #statistics-display div {
-            background-color: #fff;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        #statistics-display div p {
-            color: #2c3e50;
-        }
-        #reset-statistics {
-            padding: 10px 20px;
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            margin-top: 10px;
-        }
-        #reset-statistics:hover {
-            background-color: #c0392b;
-            transform: scale(1.05);
-        }
-
-        /* Media Queries for Responsive Design */
-        @media (max-width: 992px) {
-            .container {
-                padding: 0 15px;
-            }
-            .hero {
-                flex-direction: column;
-                text-align: center;
-            }
-            .hero-content {
-                max-width: 100%;
-            }
-            .hero-image {
-                max-width: 100%;
-            }
-            .hero-image img{
-                width: 100%;
-                margin-bottom: 20px;
-            }
-            .about-content {
-                flex-direction: column;
-            }
-            .about-image {
-                max-width: 100%;
-            }
-            .about-text {
-                max-width: 100%;
-            }
-            nav ul li {
-                margin-right: 10px;
-            }
-        }
-        @media (max-width: 768px) {
-            header .container {
-                flex-direction: column;
-                text-align: center;
-            }
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            nav ul li {
-                margin: 10px 0;
-            }
-            .buttons {
-                flex-direction: column;
-            }
-            .primary-button, .secondary-button {
-                margin: 5px 0;
-                width: 100%;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        @keyframes pulse {
-          0% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.1);
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
-        @keyframes slideInLeft {
-          from {
-            transform: translateX(-100%);
-            visibility: hidden;
-          }
-          to {
-            transform: translateX(0);
-            visibility: visible;
-          }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
@@ -437,11 +30,10 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Benvenute a RAM S.R.L.S</h1>
-                <p>Siamo un'azienda leader nel settore degli appalti elettrici, offriamo soluzioni innovative e affidabili per tutte le vostre esigenze.
-                    Ci impegniamo a rispettare i più alti standard di qualità e sicurezza in ogni progetto che realizziamo.</p>
+                <p>Siamo un'azienda leader nel settore degli appalti elettrici, offriamo soluzioni innovative e affidabili per tutte le vostre esigenze. Ci impegniamo a rispettare i più alti standard di qualità e sicurezza in ogni progetto che realizziamo.</p>
                 <div class="buttons">
-                    <a href="#" class="primary-button">Scopri di più</a>
-                    <a href="#" class="secondary-button">Contatta ora</a>
+                    <a href="#" class="primary-button" onclick="openPopup('discover-more.html'); return false;">Scopri di più</a>
+                    <a href="#" class="secondary-button" onclick="openPopup('contact-now.html'); return false;">Contatta ora</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -464,8 +56,7 @@
                 </div>
                 <div class="about-text">
                     <p>RAM Appalti Elettrici è stata fondata con l'obiettivo di offrire servizi d'eccellenza nel settore delle costruzioni. Siamo orgogliosi della nostra vasta esperienza e del nostro team specializzato, composto da ingegneri e tecnici altamente qualificati.</p>
-                    <p>Ci impegniamo a costruire relazioni durature con i nostri clienti offrendo soluzioni su misura che soddisfano le loro esigenze e superano le aspettative. I nostri servizi includono la progettazione, realizzazione e manutenzione di impianti elettrici per edifici residenziali, commerciali e industriali.
-</p>
+                    <p>Ci impegniamo a costruire relazioni durature con i nostri clienti offrendo soluzioni su misura che soddisfano le loro esigenze و superano le aspettative. I nostri servizi includono la progettazione, realizzazione e manutenzione di impianti elettrici per edifici residenziali, commerciali e industriali.</p>
                 </div>
             </div>
         </div>
@@ -503,7 +94,7 @@
 
     <script>
         // Project Timer
-        const projectStartDate = new Date("2024-07-15T08:00:00+0000"); //  تاريخ بداية المشروع
+        const projectStartDate = new Date("2024-07-15T08:00:00+0000");
         const timerDisplay = document.getElementById("timer-display");
 
         function updateTimer() {
@@ -516,7 +107,7 @@
                 const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
-                timerDisplay.innerHTML = `${days} أيام و ${hours} ساعات و ${minutes} دقائق و ${seconds} ثواني`;
+                timerDisplay.innerHTML = `${days} giorni e ${hours} ore e ${minutes} minuti e ${seconds} secondi`;
             } else {
                 timerDisplay.innerHTML = "Progetti che iniziano ora!";
                 clearInterval(timerInterval);
@@ -576,6 +167,17 @@
             totalHours = 0;
             displayStatistics();
         });
+
+        // Function to open pop-up windows
+        function openPopup(url) {
+            const width = 800; // عرض النافذة
+            const height = 600; // ارتفاع النافذة
+            const left = (window.screen.width / 2) - (width / 2);
+            const top = (window.screen.height / 2) - (height / 2);
+            const features = `width=${width},height=${height},top=${top},left=${left},scrollbars=yes,resizable=yes`;
+
+            window.open(url, '_blank', features);
+        }
     </script>
 </body>
 </html>
